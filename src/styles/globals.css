@@ -2,9 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  /* #region  /**=========== Primary Color =========== */
+@layer base {
+  body {
+    @apply bg-dark/90 font-primary text-white;
+  }
+  header {
+    @apply bg-dark/90;
+  }
+}
 
+/* #region  /**=========== Custom Scroll Bar =========== */
+
+/* width */
+::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: var(--color-dark-900); /* #1a202c */
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--color-dark-500); /* #a0aec0 */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-dark-600); /* #718096 */
+}
+
+/* #endregion  /**======== Custom Scroll Bar =========== */
+
+/* #region  /**=========== Primary Color =========== */
+:root {
   --tw-color-primary-50: 253 244 255;
   --tw-color-primary-100: 250 232 255;
   --tw-color-primary-200: 245 208 254;
@@ -25,8 +57,14 @@
   --color-primary-700: rgb(var(--tw-color-primary-700)); /* #a21caf */
   --color-primary-800: rgb(var(--tw-color-primary-800)); /* #86198f */
   --color-primary-900: rgb(var(--tw-color-primary-900)); /* #701a75 */
+  --color-dark-900: #252525;
+  --color-dark-600: #718096;
+  --color-dark-500: #303030;
+
   /* #endregion  /**======== Primary Color =========== */
 }
+
+/* #region  /**=========== Standart =========== */
 
 @layer base {
   /* inter var - latin */
@@ -116,3 +154,5 @@
     background-size: 0 2px, 100% 2px;
   }
 }
+
+/* #endregion  /**======== Standart =========== */

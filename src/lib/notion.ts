@@ -1,6 +1,15 @@
 import { Client } from '@notionhq/client';
 import { NotionToMarkdown } from 'notion-to-md';
 
+export interface PostMetaData {
+  id: string;
+  title: string;
+  slug: string;
+  description: string;
+  date: string;
+  tags: string[];
+}
+
 const client = new Client({
   auth: process.env.NOTION_KEY,
 });
@@ -24,7 +33,7 @@ export const getAllPublishedPosts = async () => {
   });
 
   const allPosts = posts.results;
-  return allPosts.map((post: any) => {
+  return allPosts.map((post) => {
     return getPageMetaData(post);
   });
 };

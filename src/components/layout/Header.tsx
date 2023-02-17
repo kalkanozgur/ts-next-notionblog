@@ -4,13 +4,13 @@ import * as React from 'react';
 import UnstyledLink from '@/components/links/UnstyledLink';
 
 const links = [
-  { href: '/', label: 'Route 1' },
-  { href: '/tindex', label: 'Route 2' },
+  { href: '/', label: 'Blog' },
+  { href: '/tindex', label: 'CV' },
 ];
 
 export default function Header() {
   return (
-    <header className='sticky top-0 z-50 bg-dark'>
+    <header className='sticky top-0 z-50'>
       <div className='layout flex h-14 items-center justify-between'>
         <UnstyledLink href='/' className='font-bold hover:text-gray-600'>
           Home

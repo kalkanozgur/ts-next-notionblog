@@ -1,10 +1,10 @@
 import { GetStaticProps } from 'next';
-import Link from 'next/link';
 import * as React from 'react';
 
-import { getAllPublishedPosts } from '@/lib/notion';
+import { getAllPublishedPosts, PostMetaData } from '@/lib/notion';
 
 import Layout from '@/components/layout/Layout';
+import { PostItem } from '@/components/postItem';
 import Seo from '@/components/Seo';
 
 export default function IndexPage({ posts }: any) {
@@ -13,19 +13,13 @@ export default function IndexPage({ posts }: any) {
     <Layout>
       <Seo templateTitle='Index' />
 
-      <main className='bg-dark'>
+      <main className=''>
         <section className=''>
           <div className='layout min-h-screen py-20'>
             <h1 className='text-4xl font-bold text-white'>Blog</h1>
             {/* <p className='text-white'>{JSON.stringify(posts)}</p> */}
-            {posts.map((post: any) => (
-              <section key={post.id}>
-                <Link href={`/posts/${post.slug}`}>
-                  <h2>{post.title}</h2>
-                </Link>
-                <p>{post.date}</p>
-                <p>{post.description}</p>
-              </section>
+            {posts.map((post: PostMetaData) => (
+              <PostItem key={post.slug} post={post} />
             ))}
           </div>
         </section>
