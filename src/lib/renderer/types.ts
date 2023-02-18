@@ -35,20 +35,20 @@ export type Heading3 = {
   children?: Block[];
 };
 export type BulletedListItem = {
-  text: RichText[];
+  rich_text: RichText[];
   children?: Block[];
 };
 export type NumberedListItem = {
-  text: RichText[];
+  rich_text: RichText[];
   children?: Block[];
 };
 export type ToDo = {
-  text: RichText[];
+  rich_text: RichText[];
   checked: boolean;
   children?: Block[];
 };
 export type Toggle = {
-  text: RichText[];
+  rich_text: RichText[];
   children?: Block[];
 };
 export type Image = {

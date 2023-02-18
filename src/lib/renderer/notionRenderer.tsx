@@ -24,14 +24,16 @@ export const renderBlock = (block: Block) => {
     case 'bulleted_list_item':
       return (
         <ul>
-          <li key={block.id}>{block.bulleted_list_item?.text[0].plain_text}</li>
+          <li key={block.id} style={{ listStyleType: 'circle' }}>
+            {block.bulleted_list_item?.rich_text[0].plain_text}
+          </li>
         </ul>
       );
     case 'numbered_list_item':
       return (
         <ol>
           <li key={block.id}>
-            {block.numbered_list_item?.text[0]?.plain_text}
+            {block.numbered_list_item?.rich_text[0]?.plain_text}
           </li>
         </ol>
       );
@@ -39,13 +41,13 @@ export const renderBlock = (block: Block) => {
       return (
         <div key={block.id}>
           <input type='checkbox' checked={block.to_do?.checked} />
-          {block.to_do?.text[0].plain_text}
+          {block.to_do?.rich_text[0].plain_text}
         </div>
       );
     case 'toggle':
       return (
         <details key={block.id}>
-          <summary>{block.toggle?.text[0].plain_text}</summary>
+          <summary>{block.toggle?.rich_text[0]?.plain_text}</summary>
 
           {block.toggle?.children?.map((child) => renderBlock(child))}
         </details>
