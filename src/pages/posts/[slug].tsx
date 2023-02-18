@@ -1,8 +1,8 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
 import * as React from 'react';
-import ReactMarkdown from 'react-markdown';
 
 import { getAllPublishedPosts, getSinglePostBySlug } from '@/lib/notion';
+import { notionRenderer } from '@/lib/renderer/notionRenderer';
 
 import Layout from '@/components/layout/Layout';
 import Seo from '@/components/Seo';
@@ -22,7 +22,8 @@ export default function BlogPage({ post }: any) {
                 </h1>
                 <p className='text-white'>{post.metadata.date}</p>
                 <p className='text-white'>{post.metadata.tags.join(', ')}</p>
-                <ReactMarkdown>{post.markdown}</ReactMarkdown>
+                <h1>post</h1>
+                {notionRenderer({ blocks: post.blocks.results })}
               </>
             )}
           </div>

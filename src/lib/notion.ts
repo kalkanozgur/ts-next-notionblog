@@ -1,5 +1,4 @@
 import { Client } from '@notionhq/client';
-import { NotionToMarkdown } from 'notion-to-md';
 
 export interface PostMetaData {
   id: string;
@@ -13,7 +12,6 @@ export interface PostMetaData {
 const client = new Client({
   auth: process.env.NOTION_KEY,
 });
-const n2m = new NotionToMarkdown({ notionClient: client });
 
 export const getAllPublishedPosts = async () => {
   const posts = await client.databases.query({
@@ -53,11 +51,14 @@ export const getSinglePostBySlug = async (slug: string) => {
 
   const post = response.results[0];
   const metadata = getPageMetaData(post);
-  const mdblocks = await n2m.pageToMarkdown(post.id);
-  const mdString = n2m.toMarkdownString(mdblocks);
-  return { metadata, markdown: mdString };
+  const blocks = await client.blocks.children.list({
+    block_id: post.id,
+  });
+
+  return { metadata, blocks };
 };
 
+/* #region  /**=========== Helper functions =========== */
 const getPageMetaData = (post: any) => {
   return {
     id: post.id as string,
@@ -79,3 +80,4 @@ function getDate(datestring: string) {
   const day = date.getDate();
   return `${day}-${month}-${year}`;
 }
+/* #endregion  /**=========== Helper functions =========== */
