@@ -5,7 +5,6 @@ import React from 'react';
 import { Block } from './types';
 
 export const renderBlock = (block: Block) => {
-  console.log('block', block);
   switch (block.type) {
     case 'paragraph':
       return <p key={block.id}>{block.paragraph?.rich_text[0]?.plain_text}</p>;
