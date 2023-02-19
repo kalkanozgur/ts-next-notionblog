@@ -24,7 +24,6 @@ export default function BlogPage({ post }: any) {
                 <p className='text-white'>{post.metadata.tags.join(', ')}</p>
                 <h1>post</h1>
                 {notionRenderer({ blocks: post.blocks.results })}
-                {/* {JSON.stringify(post)} */}
               </>
             )}
           </div>
